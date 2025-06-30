@@ -46,6 +46,14 @@ class OpenAIService {
         }
       ];
 
+      console.log('API Key:', import.meta.env.VITE_OPENAI_API_KEY);
+      console.log('Base URL:', import.meta.env.VITE_OPENAI_BASE_URL);
+
+      if (!import.meta.env.VITE_OPENAI_API_KEY) {
+        alert('API key is missing!');
+      }
+
+
       const response = await this.client.chat.completions.create({
         model: options.model || 'deepseek/deepseek-r1', // Default to DeepSeek-R1
         messages: messages,
@@ -64,7 +72,7 @@ class OpenAIService {
       };
     } catch (error) {
       console.error('OpenAI API Error:', error);
-      
+
       let errorMessage = 'An error occurred while generating the response.';
 
       if (error.status === 401) {
@@ -111,7 +119,7 @@ class OpenAIService {
       });
 
       let fullResponse = '';
-      
+
       for await (const chunk of stream) {
         const content = chunk.choices[0]?.delta?.content || '';
         if (content) {
