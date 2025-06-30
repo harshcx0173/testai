@@ -7,8 +7,8 @@ class OpenAIService {
   }
 
   initializeClient() {
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-    const baseURL = import.meta.env.VITE_OPENAI_BASE_URL || 'https://openrouter.ai/api/v1';
+    const apiKey = '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';
+    const baseURL = 'https://openrouter.ai/api/v1';
     const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
     const siteName = import.meta.env.VITE_SITE_NAME || 'AI React App';
 
