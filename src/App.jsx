@@ -48,7 +48,7 @@ function App() {
                   <b>{msg.role === 'user' ? 'You' : 'AI'}:</b> {msg.content}
                   {msg.role === 'ai' && (
                     <div>
-                      {msg.content.split('\n\n').map((para, idx) => (
+                      {msg?.content?.split('\n\n').map((para, idx) => (
                         <p key={idx}>{para}</p>
                       ))}
                       {msg.reasoning && (
